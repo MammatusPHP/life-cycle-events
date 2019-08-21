@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace ReactiveApps\Event\Promise;
+namespace ReactiveApps\LifeCycleEvents\Promise;
 
 use React\Promise\PromiseInterface;
 
-final class Shutdown implements PromiseInterface
+abstract class AbstractPromise implements PromiseInterface
 {
     /** @var bool  */
     private $fulfilled = false;

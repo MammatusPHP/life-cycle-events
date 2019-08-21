@@ -1,17 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace ReactiveApps\Tests;
+namespace ReactiveApps\Tests\LifeCycleEvents\Promise;
 
 use PHPUnit\Framework\TestCase;
 use Psr\EventDispatcher\ListenerProviderInterface;
-use ReactiveApps\Event\Promise\Shutdown as ShutdownPromise;
-use ReactiveApps\Event\Shutdown as ShutdownEvent;
+use React\Promise\PromiseInterface;
 use WyriHaximus\Broadcast\Dispatcher;
 
 /**
  * @internal
  */
-final class ShutdownTest extends TestCase
+abstract class AbstractPromiseTest extends TestCase
 {
     /**
      * @test
@@ -21,7 +20,7 @@ final class ShutdownTest extends TestCase
         $one = false;
         $two = false;
 
-        $shutdownPromise = new ShutdownPromise();
+        $shutdownPromise = $this->getPromise();
 
         $dispatcher = new Dispatcher(new class($shutdownPromise) implements ListenerProviderInterface {
             private $shutdownPromise;
@@ -44,7 +43,7 @@ final class ShutdownTest extends TestCase
         self::assertFalse($one);
         self::assertFalse($two);
 
-        $dispatcher->dispatch(new ShutdownEvent());
+        $dispatcher->dispatch($this->getEvent());
 
         self::assertTrue($one);
         self::assertFalse($two);
@@ -56,4 +55,8 @@ final class ShutdownTest extends TestCase
         self::assertTrue($one);
         self::assertTrue($two);
     }
+
+    abstract protected function getPromise(): PromiseInterface;
+
+    abstract protected function getEvent(): object;
 }

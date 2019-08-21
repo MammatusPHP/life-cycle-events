@@ -1,60 +1,25 @@
 {
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "name": "reactive-apps/app",
+    "name": "reactive-apps/life-cycle-events",
     "require": {
-        "php": "^7.2",
-        "bramus/monolog-colored-line-formatter": "^3.0",
-        "clue/block-react": "^1.3",
-        "doctrine/annotations": "^1.4",
-        "league/tactician": "^1.0",
-        "league/tactician-container": "^2.0",
-        "mnapoli/silly": "^1.7",
-        "monolog/monolog": "^1.23",
-        "php-di-definitions/definitions-gatherer": "^1.0",
-        "php-di-definitions/react-event-loop": "^1.0",
-        "php-di-definitions/react-recoil": "^1.0",
-        "php-di/php-di": "^6.0",
-        "react/event-loop": "^1.0 || ^0.5",
-        "reactive-apps/command": "dev-master",
-        "reactivex/rxphp": "^2.0",
-        "recoil/react": "^1.0",
-        "recoil/recoil": "^1.0",
-        "roave/better-reflection": "^3.0 || ^2.0",
-        "wyrihaximus/broadcast": "dev-master",
-        "wyrihaximus/doctrine-annotation-autoloader": "^1.0",
-        "wyrihaximus/get-in-packages-composer.jason": "^1.0",
-        "wyrihaximus/monolog-formatted-psr-handler": "^1.0",
-        "wyrihaximus/monolog-processors": "^1.1",
-        "wyrihaximus/psr-3-callable-throwable-logger": "^1.0",
-        "wyrihaximus/psr-3-context-logger": "^1.0",
-        "wyrihaximus/psr-3-filter": "^1.1",
-        "wyrihaximus/react-psr-3-loggly": "^2.0",
-        "wyrihaximus/react-psr-3-stdio": "^2.0",
-        "wyrihaximus/react-stdio-symfony-console": "^1.0",
-        "wyrihaximus/recoil-promise-coroutine-wrapper": "^1.0"
+        "php": "^7.2"
     },
     "require-dev": {
         "api-clients/test-utilities": "^5.0",
-        "monolog/monolog": "^1.23"
+        "wyrihaximus/broadcast": "dev-master"
     },
     "extra": {
-        "php-di-definitions": {
-            "di": [
-                "config/di/*.php"
-            ]
-        },
         "reactive-apps": {
-            "command": {
-                "ReactiveApps\\Command": "src/Command"
-            },
             "listeners": {
-                "ReactiveApps\\Event\\Boot": [
-                    "src/Listener/Signals.php"
+                "ReactiveApps\\LifeCycleEvents\\Boot": [
+                    "src/Listener/Boot.php"
                 ],
-                "ReactiveApps\\Event\\Shutdown": [
-                    "src/Listener/Logger.php",
-                    "src/Listener/Output.php"
+                "ReactiveApps\\LifeCycleEvents\\PreBoot": [
+                    "src/Listener/PreBoot.php"
+                ],
+                "ReactiveApps\\LifeCycleEvents\\Shutdown": [
+                    "src/Promise/Shutdown.php"
                 ]
             }
         }
@@ -67,12 +32,12 @@
     },
     "autoload": {
         "psr-4": {
-            "ReactiveApps\\": "src/"
+            "ReactiveApps\\LifeCycleEvents\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "ReactiveApps\\Tests\\": "tests/"
+            "ReactiveApps\\Tests\\LifeCycleEvents\\": "tests/"
         }
     },
     "scripts": {

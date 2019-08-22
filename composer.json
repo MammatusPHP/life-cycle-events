@@ -13,10 +13,10 @@
         "reactive-apps": {
             "listeners": {
                 "ReactiveApps\\LifeCycleEvents\\Boot": [
-                    "src/Listener/Boot.php"
+                    "src/Promise/Boot.php"
                 ],
                 "ReactiveApps\\LifeCycleEvents\\PreBoot": [
-                    "src/Listener/PreBoot.php"
+                    "src/Promise/PreBoot.php"
                 ],
                 "ReactiveApps\\LifeCycleEvents\\Shutdown": [
                     "src/Promise/Shutdown.php"

@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace ReactiveApps\Tests\LifeCycleEvents\Promise;
+namespace Mammatus\Tests\LifeCycleEvents\Promise;
 
+use Mammatus\LifeCycleEvents\Boot as BootEvent;
+use Mammatus\LifeCycleEvents\Promise\Boot as BootPromise;
 use React\Promise\PromiseInterface;
-use ReactiveApps\LifeCycleEvents\Boot as BootEvent;
-use ReactiveApps\LifeCycleEvents\Promise\Boot as BootPromise;
 
 /**
  * @internal

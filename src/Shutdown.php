@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace ReactiveApps\LifeCycleEvents;
+namespace Mammatus\LifeCycleEvents;
 
 final class Shutdown
 {

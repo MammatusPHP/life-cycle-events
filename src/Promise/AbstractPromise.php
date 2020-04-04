@@ -1,36 +1,45 @@
 <?php declare(strict_types=1);
 
-namespace ReactiveApps\LifeCycleEvents\Promise;
+namespace Mammatus\LifeCycleEvents\Promise;
 
 use React\Promise\PromiseInterface;
+use function is_callable;
+use function React\Promise\resolve;
+use const WyriHaximus\Constants\Boolean\FALSE_;
+use const WyriHaximus\Constants\Boolean\TRUE_;
 
 abstract class AbstractPromise implements PromiseInterface
 {
-    /** @var bool  */
-    private $fulfilled = false;
+    private bool $fulfilled = FALSE_;
 
     /** @var callable[]  */
-    private $onFulfillQueue = [];
+    private array $onFulfillQueue = [];
 
-    public function __invoke(): void
+    final public function __invoke(): void
     {
-        $this->fulfilled = true;
+        $this->fulfilled = TRUE_;
 
         foreach ($this->onFulfillQueue as $onFulfilled) {
-            $onFulfilled(true);
+            $onFulfilled(TRUE_);
         }
     }
 
-    public function then(callable $onFulfilled = null, callable $onRejected = null, callable $onProgress = null): void
+    final public function then(?callable $onFulfilled = null, ?callable $onRejected = null, ?callable $onProgress = null): PromiseInterface
     {
-        if ($this->fulfilled === false && $onFulfilled !== null) {
+        if ($this->fulfilled === FALSE_ && $onFulfilled !== null) {
             $this->onFulfillQueue[] = $onFulfilled;
 
-            return;
+            return resolve();
         }
 
-        if ($this->fulfilled === true) {
-            $onFulfilled(true);
+        if ($this->fulfilled === FALSE_) {
+            return resolve();
         }
+
+        if (is_callable($onFulfilled)) {
+            $onFulfilled(TRUE_);
+        }
+
+        return resolve();
     }
 }

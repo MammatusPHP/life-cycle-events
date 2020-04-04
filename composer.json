@@ -1,96 +1,37 @@
 {
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "name": "reactive-apps/life-cycle-events",
+    "name": "mammatus/life-cycle-events",
+    "description": "♻️ Life Cycle Events for MammatusPHP Applications",
     "require": {
-        "php": "^7.2"
+        "php": "^7.4",
+        "react/promise": "^2.7",
+        "wyrihaximus/constants": "^1.5"
     },
     "require-dev": {
-        "api-clients/test-utilities": "^5.0",
-        "wyrihaximus/broadcast": "dev-master"
-    },
-    "extra": {
-        "reactive-apps": {
-            "listeners": {
-                "ReactiveApps\\LifeCycleEvents\\Boot": [
-                    "src/Promise/Boot.php"
-                ],
-                "ReactiveApps\\LifeCycleEvents\\PreBoot": [
-                    "src/Promise/PreBoot.php"
-                ],
-                "ReactiveApps\\LifeCycleEvents\\Shutdown": [
-                    "src/Promise/Shutdown.php"
-                ]
-            }
-        }
+        "wyrihaximus/broadcast": "dev-master",
+        "wyrihaximus/test-utilities": "^2.2"
     },
     "config": {
-        "sort-packages": true,
         "platform": {
-            "php": "7.2"
-        }
+            "php": "7.4"
+        },
+        "sort-packages": true
     },
     "autoload": {
         "psr-4": {
-            "ReactiveApps\\LifeCycleEvents\\": "src/"
+            "Mammatus\\LifeCycleEvents\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "ReactiveApps\\Tests\\LifeCycleEvents\\": "tests/"
+            "Mammatus\\Tests\\LifeCycleEvents\\": "tests/"
         }
     },
     "scripts": {
-        "ensure-installed": "composer install --ansi -n -q",
-        "cs": [
-            "@ensure-installed",
-            "php-cs-fixer fix --config=.php_cs --ansi --dry-run --diff --verbose --allow-risky=yes --show-progress=estimating"
+        "post-install-cmd": [
+            "composer normalize"
         ],
-        "cs-fix": [
-            "@ensure-installed",
-            "php-cs-fixer fix --config=.php_cs --ansi --verbose --allow-risky=yes --show-progress=estimating"
-        ],
-        "unit": [
-            "@ensure-installed",
-            "phpunit --colors=always -c phpunit.xml.dist"
-        ],
-        "unit-coverage": [
-            "@ensure-installed",
-            "phpunit --colors=always -c phpunit.xml.dist --coverage-text --coverage-html covHtml --coverage-clover ./build/logs/clover.xml"
-        ],
-        "lint-php": [
-            "@ensure-installed",
-            "parallel-lint --exclude vendor ."
-        ],
-        "qa-all": [
-            "@lint-php",
-            "@cs",
-            "@unit"
-        ],
-        "qa-all-coverage": [
-            "@lint-php",
-            "@cs",
-            "@unit-coverage"
-        ],
-        "qa-windows": [
-            "@lint-php",
-            "@cs",
-            "@unit"
-        ],
-        "qa-ci": [
-            "@unit"
-        ],
-        "qa-ci-extended": [
-            "@qa-all-coverage"
-        ],
-        "qa-ci-windows": [
-            "@qa-windows"
-        ],
-        "qa-contrib": [
-            "@qa-all"
-        ],
-        "ci-coverage": [
-            "if [ -f ./build/logs/clover.xml ]; then wget https://scrutinizer-ci.com/ocular.phar && php ocular.phar code-coverage:upload --format=php-clover ./build/logs/clover.xml; fi"
+        "post-update-cmd": [
+            "composer normalize"
         ]
     }
 }

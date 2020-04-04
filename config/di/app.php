@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
-use ReactiveApps\CommandCreator;
-use ReactiveApps\CommandLocator;
+use Mammatus\CommandCreator;
+use Mammatus\CommandLocator;
 use Silly\Application;
 
 return (function () {

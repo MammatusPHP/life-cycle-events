@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace ReactiveApps\Tests\LifeCycleEvents\Promise;
+namespace Mammatus\Tests\LifeCycleEvents\Promise;
 
 use PHPUnit\Framework\TestCase;
 use Psr\EventDispatcher\ListenerProviderInterface;
@@ -15,7 +15,7 @@ abstract class AbstractPromiseTest extends TestCase
     /**
      * @test
      */
-    public function promise(): void
+    final public function promise(): void
     {
         $one = false;
         $two = false;
@@ -23,20 +23,23 @@ abstract class AbstractPromiseTest extends TestCase
         $shutdownPromise = $this->getPromise();
 
         $dispatcher = new Dispatcher(new class($shutdownPromise) implements ListenerProviderInterface {
-            private $shutdownPromise;
+            private PromiseInterface $shutdownPromise;
 
-            public function __construct($shutdownPromise)
+            public function __construct(PromiseInterface $shutdownPromise)
             {
                 $this->shutdownPromise = $shutdownPromise;
             }
 
+            /**
+             * @return iterable<array-key, object>
+             */
             public function getListenersForEvent(object $event): iterable
             {
                 yield $this->shutdownPromise;
             }
         });
 
-        $shutdownPromise->then(function () use (&$one): void {
+        $shutdownPromise->then(static function () use (&$one): void {
             $one = true;
         });
 
@@ -48,7 +51,7 @@ abstract class AbstractPromiseTest extends TestCase
         self::assertTrue($one);
         self::assertFalse($two);
 
-        $shutdownPromise->then(function () use (&$two): void {
+        $shutdownPromise->then(static function () use (&$two): void {
             $two = true;
         });
 

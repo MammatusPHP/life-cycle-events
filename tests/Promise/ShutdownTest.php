@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace ReactiveApps\Tests\LifeCycleEvents\Promise;
+namespace Mammatus\Tests\LifeCycleEvents\Promise;
 
+use Mammatus\LifeCycleEvents\Promise\Shutdown as ShutdownPromise;
+use Mammatus\LifeCycleEvents\Shutdown as ShutdownEvent;
 use React\Promise\PromiseInterface;
-use ReactiveApps\LifeCycleEvents\Promise\Shutdown as ShutdownPromise;
-use ReactiveApps\LifeCycleEvents\Shutdown as ShutdownEvent;
 
 /**
  * @internal

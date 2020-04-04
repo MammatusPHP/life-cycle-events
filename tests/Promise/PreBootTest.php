@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace ReactiveApps\Tests\LifeCycleEvents\Promise;
+namespace Mammatus\Tests\LifeCycleEvents\Promise;
 
+use Mammatus\LifeCycleEvents\PreBoot as PreBootEvent;
+use Mammatus\LifeCycleEvents\Promise\PreBoot as PreBootPromise;
 use React\Promise\PromiseInterface;
-use ReactiveApps\LifeCycleEvents\PreBoot as PreBootEvent;
-use ReactiveApps\LifeCycleEvents\Promise\PreBoot as PreBootPromise;
 
 /**
  * @internal

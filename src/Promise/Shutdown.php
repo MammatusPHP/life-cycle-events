@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace ReactiveApps\LifeCycleEvents\Promise;
+namespace Mammatus\LifeCycleEvents\Promise;
 
 final class Shutdown extends AbstractPromise
 {

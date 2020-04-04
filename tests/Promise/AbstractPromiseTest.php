@@ -23,11 +23,11 @@ abstract class AbstractPromiseTest extends TestCase
         $shutdownPromise = $this->getPromise();
 
         $dispatcher = new Dispatcher(new class($shutdownPromise) implements ListenerProviderInterface {
-            private PromiseInterface $_shutdownPromise;
+            private PromiseInterface $shutdownPromise;
 
             public function __construct(PromiseInterface $shutdownPromise)
             {
-                $this->_shutdownPromise = $shutdownPromise;
+                $this->shutdownPromise = $shutdownPromise;
             }
 
             /**
@@ -35,7 +35,7 @@ abstract class AbstractPromiseTest extends TestCase
              */
             public function getListenersForEvent(object $event): iterable
             {
-                yield $this->_shutdownPromise;
+                yield $this->shutdownPromise;
             }
         });
 

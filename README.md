@@ -15,6 +15,20 @@ To install via [Composer](http://getcomposer.org/), use the command below, it wi
 composer require mammatus/life-cycle-events
 ```
 
+# Events
+
+## Initialize
+
+Initialization phase for any blocking operation before the event loop starts.
+
+## Boot
+
+The event loop has just started running and the application is now running.
+
+## Shutdown
+
+Shutdown is emitted when an fatal error occurred or an OS signal is caught an the application is shutting down.
+
 # License
 
 The MIT License (MIT)

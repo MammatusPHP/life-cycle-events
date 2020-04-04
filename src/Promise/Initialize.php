@@ -2,6 +2,6 @@
 
 namespace Mammatus\LifeCycleEvents\Promise;
 
-final class PreBoot extends AbstractPromise
+final class Initialize extends AbstractPromise
 {
 }

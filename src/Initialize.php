@@ -2,6 +2,6 @@
 
 namespace Mammatus\LifeCycleEvents;
 
-final class PreBoot
+final class Initialize
 {
 }

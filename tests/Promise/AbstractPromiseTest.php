@@ -10,6 +10,7 @@ use WyriHaximus\Broadcast\Dispatcher;
 /**
  * @internal
  */
+// phpcs:disable
 abstract class AbstractPromiseTest extends TestCase
 {
     /**
@@ -21,7 +22,6 @@ abstract class AbstractPromiseTest extends TestCase
         $two = false;
 
         $shutdownPromise = $this->getPromise();
-
         $dispatcher = new Dispatcher(new class($shutdownPromise) implements ListenerProviderInterface {
             private PromiseInterface $shutdownPromise;
 
@@ -31,7 +31,7 @@ abstract class AbstractPromiseTest extends TestCase
             }
 
             /**
-             * @return iterable<array-key, object>
+             * @return iterable<int, object>
              */
             public function getListenersForEvent(object $event): iterable
             {
@@ -63,3 +63,4 @@ abstract class AbstractPromiseTest extends TestCase
 
     abstract protected function getEvent(): object;
 }
+// phpcs:enable

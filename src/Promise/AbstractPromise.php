@@ -1,10 +1,14 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Mammatus\LifeCycleEvents\Promise;
 
 use React\Promise\PromiseInterface;
+
 use function is_callable;
 use function React\Promise\resolve;
+
 use const WyriHaximus\Constants\Boolean\FALSE_;
 use const WyriHaximus\Constants\Boolean\TRUE_;
 

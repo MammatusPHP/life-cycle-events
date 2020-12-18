@@ -1,15 +1,15 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Mammatus\Tests\LifeCycleEvents\Promise;
 
 use PHPUnit\Framework\TestCase;
 use Psr\EventDispatcher\ListenerProviderInterface;
+use Psr\Log\NullLogger;
 use React\Promise\PromiseInterface;
 use WyriHaximus\Broadcast\Dispatcher;
 
-/**
- * @internal
- */
 // phpcs:disable
 abstract class AbstractPromiseTest extends TestCase
 {
@@ -37,7 +37,7 @@ abstract class AbstractPromiseTest extends TestCase
             {
                 yield $this->shutdownPromise;
             }
-        });
+        }, new NullLogger());
 
         $shutdownPromise->then(static function () use (&$one): void {
             $one = true;

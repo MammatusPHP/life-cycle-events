@@ -8,12 +8,12 @@
         "wyrihaximus/constants": "^1.5"
     },
     "require-dev": {
-        "wyrihaximus/broadcast": "dev-master",
-        "wyrihaximus/test-utilities": "^2.2"
+        "wyrihaximus/broadcast": "^1.0",
+        "wyrihaximus/test-utilities": "^3.3"
     },
     "config": {
         "platform": {
-            "php": "7.4"
+            "php": "7.4.7"
         },
         "sort-packages": true
     },

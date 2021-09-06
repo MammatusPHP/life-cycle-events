@@ -3,7 +3,7 @@
     "description": "♻️ Life Cycle Events for MammatusPHP Applications",
     "license": "MIT",
     "require": {
-        "php": "^7.4",
+        "php": "^8 || ^7.4",
         "react/promise": "^2.7",
         "wyrihaximus/constants": "^1.5"
     },

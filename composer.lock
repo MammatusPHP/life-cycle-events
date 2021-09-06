@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9ea8d5f6cbe3889189400663a1ee9af1",
+    "content-hash": "f31f093d354dba4b660fdf9bf56c50c4",
     "packages": [
         {
             "name": "react/promise",
@@ -8965,7 +8965,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.4"
+        "php": "^8 || ^7.4"
     },
     "platform-dev": [],
     "platform-overrides": {

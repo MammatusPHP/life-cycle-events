@@ -1,55 +1,52 @@
 {
-    "timeout": 120,
+    "timeout": 300,
     "source": {
         "directories": [
             "src"
         ]
     },
     "logs": {
-        "text": "infection-log.txt"
+        "text": "./var/infection.log",
+        "summary": "./var/infection-summary.log",
+        "json": "./var/infection.json",
+        "perMutator": "./var/infection-per-mutator.md"
     },
     "mutators": {
         "@default": true,
-        "FunctionCallRemoval": {
+        "ArrayItemRemoval": {
             "ignore": [
-                "WyriHaximus\\TestUtilities\\TestCase::waitUntilTheNextSecond"
+              "WyriHaximus\\React\\Mutex\\AbstractMutexTestCase::thatYouCantRequiredTheSameLockTwice"
+            ]
+        },
+        "InstanceOf_": {
+            "ignore": [
+              "WyriHaximus\\React\\Mutex\\Memory::release"
+            ]
+        },
+        "LogicalNot": {
+            "ignore": [
+              "WyriHaximus\\React\\Mutex\\Memory::release"
+            ]
+        },
+        "LogicalOr": {
+            "ignore": [
+              "WyriHaximus\\React\\Mutex\\Memory::release"
             ]
         },
         "MethodCallRemoval": {
             "ignore": [
-                "WyriHaximus\\TestUtilities\\TestCase::tearDown"
-            ]
-        },
-        "Continue_": {
-            "ignore": [
-                "WyriHaximus\\TestUtilities\\TestCase::rmdir"
-            ]
-        },
-        "TrueValue": {
-            "ignore": [
-                "WyriHaximus\\TestUtilities\\TestCase::provideTrueFalse"
-            ]
-        },
-        "ArrayItemRemoval": false,
-        "FalseValue": {
-            "ignore": [
-                "WyriHaximus\\TestUtilities\\TestCase::provideTrueFalse"
+              "WyriHaximus\\React\\Mutex\\AbstractMutexTestCase::thatYouCantRequiredTheSameLockTwice",
+              "WyriHaximus\\React\\Mutex\\AbstractMutexTestCase::cannotReleaseLockWithWrongRng"
             ]
         },
         "PublicVisibility": {
             "ignore": [
-                "WyriHaximus\\TestUtilities\\TestCase::provideTrueFalse"
-            ]
-        },
-        "Identical": {
-            "ignore": [
-                "WyriHaximus\\TestUtilities\\TestCase::getSysTempDir"
-            ]
-        },
-        "UnwrapStrToUpper": {
-            "ignore": [
-                "WyriHaximus\\TestUtilities\\TestCase::getSysTempDir"
+              "WyriHaximus\\React\\Mutex\\AbstractMutexTestCase::thatYouCantRequiredTheSameLockTwice",
+              "WyriHaximus\\React\\Mutex\\AbstractMutexTestCase::cannotReleaseLockWithWrongRng"
             ]
         }
+    },
+    "phpUnit": {
+        "configDir": "./etc/qa/"
     }
 }

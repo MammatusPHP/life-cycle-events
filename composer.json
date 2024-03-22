@@ -3,19 +3,10 @@
     "description": "♻️ Life Cycle Events for MammatusPHP Applications",
     "license": "MIT",
     "require": {
-        "php": "^8 || ^7.4",
-        "react/promise": "^2.7",
-        "wyrihaximus/constants": "^1.5"
+        "php": "^8.2"
     },
     "require-dev": {
-        "wyrihaximus/broadcast": "^1.0",
-        "wyrihaximus/test-utilities": "^3.3"
-    },
-    "config": {
-        "platform": {
-            "php": "7.4.7"
-        },
-        "sort-packages": true
+        "wyrihaximus/test-utilities": "^5.6"
     },
     "autoload": {
         "psr-4": {
@@ -27,12 +18,25 @@
             "Mammatus\\Tests\\LifeCycleEvents\\": "tests/"
         }
     },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "ergebnis/composer-normalize": true,
+            "infection/extension-installer": true
+        },
+        "platform": {
+            "php": "8.2.13"
+        },
+        "sort-packages": true
+    },
     "scripts": {
         "post-install-cmd": [
-            "composer normalize"
+            "composer normalize",
+            "composer update --lock --no-scripts"
         ],
         "post-update-cmd": [
-            "composer normalize"
+            "composer normalize",
+            "composer update --lock --no-scripts"
         ]
     }
 }

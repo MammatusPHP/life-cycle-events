@@ -21,9 +21,11 @@ composer require mammatus/life-cycle-events
 
 Initialization phase for any blocking operation before the event loop starts.
 
-## Boot
+## Boot/Start
 
-The event loop has just started running and the application is now running.
+The event loop has just started running and the application is now running. Now the different between the `Boot` and
+`Start` event is that the `Boot` event is used for the generic catch all process. While `Start` is used for specific
+split out processes.
 
 ## Shutdown
 

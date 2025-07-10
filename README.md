@@ -17,6 +17,10 @@ composer require mammatus/life-cycle-events
 
 # Events
 
+## Kernel
+
+Pre-Initialization phase for anything that MUST be set up first like OTEL.
+
 ## Initialize
 
 Initialization phase for any blocking operation before the event loop starts.

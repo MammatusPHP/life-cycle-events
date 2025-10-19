@@ -17,6 +17,10 @@ composer require mammatus/life-cycle-events
 
 # Events
 
+## Build
+
+Build event that is triggered during build time, e.g. on Docker build time before the application is deployed.
+
 ## Kernel
 
 Pre-Initialization phase for anything that MUST be set up first like OTEL.

@@ -41,8 +41,8 @@ Shutdown is emitted when an fatal error occurred or an OS signal is caught an th
 
 ## Listener
 
-The following listener is from one of my apps and listeners both on intialize and shutdown events. The logic has been
-taken out, but logging is left intact to demonstracte a simple listener example.
+The following listener is from one of my apps and listeners both on initialize and shutdown events. The logic has been
+taken out, but logging is left intact to demonstrate a simple listener example.
 
 ```php
 <?php
